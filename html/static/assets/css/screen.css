@@ -1,0 +1,30 @@
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-size:12px;
+	font-family:Arial;
+}
+
+#terminal {
+	background-color:#333;
+	height:100%;
+	position:fixed;
+	bottom:0px;
+	left:0px;
+	width:100%;
+	overflow:scroll;
+	z-index:9999;
+}
+
+#terminal .cmd {
+	 background-color:transparent;
+	 color:#fff;
+	 border:0px;
+	 width:80%;
+	 padding:4px 10px;
+	 outline:none;
+	 margin-bottom:10px;
+}
