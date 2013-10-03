@@ -68,9 +68,10 @@ abstract class Human
     public function get_full_name($string = false)
     {
 
-        return ($string) ? "{$this->first_name} {$this->last_name}" :
+        return ($string) ? "{$this->title} {$this->first_name} {$this->last_name}" :
                     array(
-                        'first_name'=>$this->first_name ,
+                        'title'     => $this->title,
+                        'first_name'=> $this->first_name,
                         'last_name' => $this->last_name
                     );
     }
