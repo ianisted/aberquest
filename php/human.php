@@ -5,8 +5,7 @@
  * Extend with male/female/etc.
  */
 
-abstract class Human  {
-    //instance variables
+abstract class Human   { //instance variables
     
     private $id;
     private $title;
@@ -59,5 +58,15 @@ abstract class Human  {
     public function get_eyes() { return array('left_eye'=>$this->left_eye,'right_eye'=>$this->right_eye); }
     public function get_hands() { return array('left_hand'=>$this->left_hand,'right_hand'=>$this->right_hand); }
     public function get_ears() { return array('left_ear'=>$this->left_ear,'right_ear'=>$this->right_ear); }
-    public function get_current_location() { return $this->current_location; }
-}
+    public function get_current_location(){ return $this->current_location; }
+    public function get_date_of_birth() { return $this->date_of_birth; }
+    public function get_game_start_time() { return $this->game_start_time; }
+    public function get_marital_status() { return $this->marital_status; }
+    public function get_sexuality() { return $this->sexuality; }
+    public function get_appearance() { return $this->appearance; }
+    public function get_personality() { return $this->personality; }
+    public function get_emotion() { return $this->emotion; }
+    public function get_inventory() { return $this->inventory; }
+    public function get_bank_details() { return $this->bank_details; }
+    public function get_home_location() { return $this->home_location; }
+     }
