@@ -10,37 +10,37 @@ abstract class Human
 
     //instance variables
 
-    private $id;
-    private $title;
-    private $first_name;
-    private $last_name;
-    private $nickname;
-    private $gender;
-    private $height;
-    private $weight;
-    private $sleep_status;
-    private $observer_status;
-    private $left_arm;
-    private $right_arm;
-    private $left_leg;
-    private $right_leg;
-    private $left_eye;
-    private $right_eye;
-    private $left_hand;
-    private $right_hand;
-    private $left_ear;
-    private $right_ear;
-    private $current_location;
-    private $date_of_birth;
-    private $game_start_time;
-    private $marital_status;
-    private $sexuality;
-    private $appearance;
-    private $personality;
-    private $emotion;
-    private $inventory;
-    private $bank_details;
-    private $home_location;
+    protected $id;
+    protected $title;
+    protected $first_name;
+    protected $last_name;
+    protected $nickname;
+    protected $gender;
+    protected $height;
+    protected $weight;
+    protected $sleep_status;
+    protected $observer_status;
+    protected $left_arm;
+    protected $right_arm;
+    protected $left_leg;
+    protected $right_leg;
+    protected $left_eye;
+    protected $right_eye;
+    protected $left_hand;
+    protected $right_hand;
+    protected $left_ear;
+    protected $right_ear;
+    protected $current_location;
+    protected $date_of_birth;
+    protected $game_start_time;
+    protected $marital_status;
+    protected $sexuality;
+    protected $appearance;
+    protected $personality;
+    protected $emotion;
+    protected $inventory;
+    protected $bank_details;
+    protected $home_location;
 
 
     // Accessors - specifically defining these rather than using magic methods.
