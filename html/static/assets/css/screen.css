@@ -4,8 +4,9 @@ html, body {
 }
 
 body {
-	font-size:12px;
+	font-size:14px;
 	font-family:Arial;
+	color: #fff;
 }
 
 #terminal {
@@ -19,6 +20,10 @@ body {
 	z-index:9999;
 }
 
+#terminal {
+	
+}
+
 #terminal .cmd {
 	 background-color:transparent;
 	 color:#fff;
@@ -27,4 +32,6 @@ body {
 	 padding:4px 10px;
 	 outline:none;
 	 margin-bottom:10px;
+	 font-size: 1em;
+	 padding-left: 30px;
 }
