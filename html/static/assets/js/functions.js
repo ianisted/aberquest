@@ -20,6 +20,7 @@ function logger(string,logID,status) {
 
 
 var connection = false;
+var history = [];
 
 
 var Game = {
@@ -28,50 +29,79 @@ var Game = {
 		
 		Game.connect();
 		
-		Game.Cmd.input();
+		$('.cmd').keyup(function(event) {
+				switch(event.which) {
+					case 13:
+						Game.Cmd.input($('.cmd').val());
+						break;
+					case 27:
+						$('.cmd').val('');
+						break;
+					case 38:
+						Game.Cmd.History.previous();
+						break;
+					case 40:
+						Game.Cmd.History.next();
+						break;
+					
+				}	
+		});
 	},
 	Cmd: {
-		input:function() {
-			$('.cmd').keyup(function(event) {
-				if ( event.which == 13 ) {
-					var input = $('.cmd').val();
+		input:function(e) {
+		
+			var input = e;
 					
-					if (input.toLowerCase().indexOf("<script") >= 0) {
-						logger("Not cool dude");
-						$('.cmd').val('');
-						return false;
-					}
-					
-					var cmd = $('.cmd').val().split(' ')[ 0 ].toLowerCase();
-					var string = input.substr(input.indexOf(" ") + 1);
-					
-					
-					switch(cmd) {
-						case "connect":
-							Game.connect();
-							break;
-						case "h4x0r": case "hacktheplanet": case "hacker": case "l33t": case "1337":
-							$('html').toggleClass('hacker');
-							break;
-						case "time": case "clock": case "date":
-							logger('<span class="error"><strong>' + cmd + '</strong>: ' + $.now() + '</span>');
-							break;
-						case "print": case "echo":
-							logger('<strong class="muted">' + string + '</strong>');
-							break;
-						case "clear": case "cls":
-							$('#terminal ul').html('');
-							break;
-						default:
-							logger('<span class="error"><strong>' + cmd + '</strong>: command not found</span>');
-					}
-					
-					$('.cmd').val('');
-				}
-				
-				
-			});
+			if (input.toLowerCase().indexOf("<script") >= 0) {
+				logger("Not cool dude");
+				$('.cmd').val('');
+				return false;
+			}
+			
+			history.push(input);
+			
+			var cmd = $('.cmd').val().split(' ')[ 0 ].toLowerCase();
+			var string = input.substr(input.indexOf(" ") + 1);
+			
+			
+			switch(cmd) {
+				case "connect":
+					Game.connect();
+					break;
+				case "h4x0r": case "hacktheplanet": case "hacker": case "l33t": case "1337":
+					$('html').toggleClass('hacker');
+					break;
+				case "time": case "clock": case "date":
+					logger('<span class="error"><strong>' + cmd + '</strong>: ' + $.now() + '</span>');
+					break;
+				case "print": case "echo":
+					logger('<strong class="muted">' + string + '</strong>');
+					break;
+				case "clear": case "cls":
+					$('#terminal ul').html('');
+					break;
+				case "history":
+					historylog = "";
+					$.each(history, function(i,val) {
+						historylog = historylog + i + ': ' + val + "<br />";
+					});
+					logger(historylog);
+					break;
+				default:
+					logger('<span class="error"><strong>' + cmd + '</strong>: command not found</span>');
+			}
+			
+			$('.cmd').val('');
+		
 		},
+		History: {
+			previous:function() {
+				logger("Previous command (coming soon)");
+			},
+			next:function() {
+				logger("Next command (coming soon)");
+			}
+		}
 		
 		
 	},
