@@ -13,8 +13,13 @@
     
     $return_array = array();
 
-    
-    if (!empty($_GET['action']))
+		if (!empty($_GET['connect']))
+		{
+			$user = $_GET['connect'];
+			$return_array['type'] = "success";
+      $return_array['response_string'] = "Connected. Welcome to Aberquest, {$user}.";
+		}
+		elseif (!empty($_GET['action']))
     {
         /* this is just a mockup, really we'll have different files here based on actions probably, each of which will have their own rules etc. */
         $action = $_GET['action'];
