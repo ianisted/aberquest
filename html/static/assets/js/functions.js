@@ -106,15 +106,24 @@ var Game = {
 		
 	},
 	connect:function() {
+			// Connect to server
+	
 			logger('Connecting to server&hellip;');
 		
-			// Connect to server ;)
-			
-			if (connection) {
-				logger('Connected. Welcome to Aberquest.');
-			} else {
-				logger('There was a problem connecting. Type <strong>connect</strong> to retry at any time.');
-			}
-			
+			var xhr = new $.ajax({
+		    type: 'POST',
+		    url: 'http://aberquest.local/api/?action=hello+world"',
+		    data: {
+		    	action: "hello world"
+		    },
+		    dataType: "json",
+		    success: function(response, textStatus, XMLHttpRequest) {
+		    	logger('<pre>Connection details:\r\n--&gt; status: ' + textStatus + '\r\n--&gt; response: ' + response.message + '</pre>');
+		    	logger('Connected. Welcome to Aberquest.');
+	       },
+	       error: function(response, textStatus, XMLHttpRequest) {
+	       	logger('There was a problem connecting. Type <strong>connect</strong> to retry at any time.');
+	       }
+		 });
 		}
 }
