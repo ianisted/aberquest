@@ -25,19 +25,29 @@ body {
 .hacker #terminal .cmd {
 	color: lime;
 	text-shadow: 0px 0px 10px lime;
-	-webkit-animation-duration: 50.3s;
+	/*-webkit-animation-duration: 50.3s;*/
+	-webkit-animation-duration: 7s;
 	-webkit-animation-fill-mode: forwards;
 	-webkit-animation-iteration-count: infinite;
 	-webkit-animation-name: hacker;
 }
 
-@-webkit-keyframes hacker {
+/*@-webkit-keyframes hacker {
 	0%,99% { text-shadow: 0px 0px 10px lime; }
 	99.1% { text-shadow: 5px 5px 1px lime; }
 	99.5% { text-shadow: 0px 0px 10px lime;  }
 	99.9% { text-shadow: -5px -5px 1px lime; }
 	100% { text-shadow: 0px 0px 10px lime; }
+}*/
+
+@-webkit-keyframes hacker {
+	0%,93% { text-shadow: 0px 0px 10px lime; }
+	95% { text-shadow: 5px 5px 1px lime; }
+	97% { text-shadow: 0px 0px 10px lime;  }
+	99% { text-shadow: -5px -5px 1px lime; }
+	100% { text-shadow: 0px 0px 10px lime; }
 }
+
 
 
 .hacker #terminal {

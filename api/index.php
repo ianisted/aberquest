@@ -31,8 +31,9 @@
             $token = strtok(" ");
             $paramaters .= " {$token}";
         }
+        $paramaters = trim($paramaters);
         $return_array['type'] = "success";
-        $return_array['response_string'] = "You just asked me to {$action} on '{$paramaters}'";
+        $return_array['response_string'] = "You just asked me to {$action} on {$paramaters}";
         
     }
     else
