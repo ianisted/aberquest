@@ -29,7 +29,7 @@ function logger(string,logID,status) {
 
 
 var connection = false; // Boolean to tell the system if a server connection has been made
-var history = []; // User command history
+
 
 
 var Game = {
@@ -87,7 +87,7 @@ var Game = {
 				return false;
 			}
 					
-			history.push(input);
+			Game.Cmd.History.list.push(input);
 			
 			var cmd = $('.cmd').val().split(' ')[ 0 ].toLowerCase();
 			var string = input.substr(input.indexOf(" ") + 1);
@@ -115,7 +115,7 @@ var Game = {
 					break;
 				case "history":
 					historylog = "";
-					$.each(history, function(i,val) {
+					$.each(Game.Cmd.History.list, function(i,val) {
 						historylog = historylog + i + ': ' + val + "<br />";
 					});
 					logger(historylog);
@@ -142,11 +142,36 @@ var Game = {
 			 });
 		},
 		History: {
+			list: [],
+			list_position:0,
 			previous:function() {
-				logger("Previous command (coming soon)");
+				var list = Game.Cmd.History.list;
+				var pos = Game.Cmd.History.list_position;
+				
+					if (pos == 0) {
+						Game.Cmd.History.list_position = list.length - 1;
+						$('.cmd').val(Game.Cmd.History.list[list.length] + ' [' + list.length + ']');
+					} else {
+						pos = pos - 1;
+						Game.Cmd.History.list_position = pos;
+						$('.cmd').val(Game.Cmd.History.list[pos] + ' [' + pos + ']');
+					}
+				
 			},
 			next:function() {
-				logger("Next command (coming soon)");
+				var list = Game.Cmd.History.list;
+				var pos = Game.Cmd.History.list_position;
+				
+				if (pos == false) {
+					$('.cmd').val(Game.Cmd.History.list[0] + ' [' + pos + ']');
+				} else {
+					if (pos == 0) {
+						Game.Cmd.History.list_position = false;
+					} else {
+						Game.Cmd.History.list_position = pos + 1;
+						$('.cmd').val(Game.Cmd.History.list[pos] + ' [' + pos + ']');
+					}
+				}
 			}
 		}
 		
