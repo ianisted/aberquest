@@ -44,7 +44,7 @@ var Game = {
 		logger('To get started enter your name.');
 
 		
-		$('.cmd').keyup(function(event) {
+		$('.cmd').keydown(function(event) {
 				switch(event.which) {
 					case 13:
 						if ($('.cmd').val() == "") {
@@ -148,13 +148,16 @@ var Game = {
 				var list = Game.Cmd.History.list;
 				var pos = Game.Cmd.History.list_position;
 				
+				console.log(pos + ' : ' + list.length);
+				
 					if (pos == 0) {
-						Game.Cmd.History.list_position = list.length - 1;
-						$('.cmd').val(Game.Cmd.History.list[list.length] + ' [' + list.length + ']');
+						pos = list.length - 1;
+						Game.Cmd.History.list_position = pos;
+						$('.cmd').val(Game.Cmd.History.list[pos]);
 					} else {
 						pos = pos - 1;
 						Game.Cmd.History.list_position = pos;
-						$('.cmd').val(Game.Cmd.History.list[pos] + ' [' + pos + ']');
+						$('.cmd').val(Game.Cmd.History.list[pos]);
 					}
 				
 			},
@@ -162,16 +165,23 @@ var Game = {
 				var list = Game.Cmd.History.list;
 				var pos = Game.Cmd.History.list_position;
 				
-				if (pos == false) {
-					$('.cmd').val(Game.Cmd.History.list[0] + ' [' + pos + ']');
-				} else {
 					if (pos == 0) {
-						Game.Cmd.History.list_position = false;
-					} else {
-						Game.Cmd.History.list_position = pos + 1;
-						$('.cmd').val(Game.Cmd.History.list[pos] + ' [' + pos + ']');
+						//Game.Cmd.History.list_position = list.length - 1;
+						//pos = Game.Cmd.History.list_position;
+						$('.cmd').val(Game.Cmd.History.list[pos]);
+						pos = pos + 1;
+						Game.Cmd.History.list_position = pos;
+					} else if (pos < list.length) {
+						$('.cmd').val(Game.Cmd.History.list[pos]);
+						if (pos != list.length - 1) {
+							pos = pos + 1;
+							Game.Cmd.History.list_position = pos;
+						} else {
+							pos = 0;
+							Game.Cmd.History.list_position = pos;
+						}
 					}
-				}
+				
 			}
 		}
 		
