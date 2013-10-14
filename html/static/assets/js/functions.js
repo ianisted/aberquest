@@ -131,7 +131,7 @@ var Game = {
 		send:function(e) {
 			var xhr = new $.ajax({
 			    type: 'POST',
-			    url: 'http://aberquest.local/api/?action=' + e,
+			    url: '../../api/?action=' + e,
 			    dataType: "json",
 			    success: function(response, textStatus, XMLHttpRequest) {
 			    	logger(response.response_string);
@@ -195,7 +195,7 @@ var Game = {
 			
 			var xhr = new $.ajax({
 		    type: 'POST',
-		    url: 'http://aberquest.local/api/?connect=' + Game.Player.name,
+		    url: '../../api/?connect=' + Game.Player.name,
 		    dataType: "json",
 		    success: function(response, textStatus, XMLHttpRequest) {
 		    	if (params == true) {
