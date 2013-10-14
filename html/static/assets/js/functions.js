@@ -68,9 +68,11 @@ var Game = {
 						break;
 					case 38:
 						Game.Cmd.History.previous();
+						event.preventDefault();
 						break;
 					case 40:
 						Game.Cmd.History.next();
+						event.preventDefault();
 						break;
 					
 				}	
@@ -147,8 +149,6 @@ var Game = {
 			previous:function() {
 				var list = Game.Cmd.History.list;
 				var pos = Game.Cmd.History.list_position;
-				
-				console.log(pos + ' : ' + list.length);
 				
 					if (pos == 0) {
 						pos = list.length - 1;
