@@ -1,6 +1,7 @@
 <?php
 	require_once('../config/config.php');
 ?>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,7 +12,7 @@
 	</head>
 	<body>
 	
-		<div id="terminal"><?php echo $version[0]; echo show_version(); ?>
+		<div id="terminal">
 			<ul id="output"></ul>
 			<div class="cmd-panel">> <input type="text" class="cmd" /></div>
 		</div>
