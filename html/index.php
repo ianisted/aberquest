@@ -24,5 +24,6 @@
 		<script type="text/javascript" src="assets/js/jquery.min.js"></script>
 		<script type="text/javascript" src="assets/js/functions.js"></script>
 		<script type="text/javascript" src="assets/js/global.js"></script>
+		<script type="text/javascript" src="assets/js/help.js"></script>
 	</body>
 </html>

@@ -62,9 +62,11 @@ var Game = {
 						} else {
 							Game.Cmd.input($('.cmd').val());
 						}
+						Game.Cmd.History.listposition = 0;
 						break;
 					case 27:
 						$('.cmd').val('');
+						Game.Cmd.History.listposition = 0;
 						break;
 					case 38:
 						Game.Cmd.History.previous();
@@ -102,6 +104,9 @@ var Game = {
 					} else {
 						Game.connect();
 					}
+					break;
+				case "help":
+					Game.help(string);
 					break;
 				case "h4x0r": case "hacktheplanet": case "hacker": case "l33t": case "1337":
 					$('html').toggleClass('hacker');
@@ -186,6 +191,22 @@ var Game = {
 		}
 		
 		
+	},
+	help:function(e) {
+		if (e.toLowerCase() == "help") {
+			e = "";
+		}
+		if (e.length > 0) {
+			logger(helpDirectory[e]);
+		} else {
+			var helplist = "";
+			
+			$.each(helpDirectory, function(key, value) {
+				helplist = helplist + value + '<br />';
+			});
+			
+			logger('<br />Available commands:<br />' + helplist + '<br />');
+		}
 	},
 	connect:function(params) {
 			// Connect to server
