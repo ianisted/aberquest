@@ -114,6 +114,9 @@ var Game = {
 				case "time": case "clock": case "date":
 					logger('<span class="error"><strong>' + cmd + '</strong>: ' + $.now() + '</span>');
 					break;
+				case "ping":
+					Game.ping();
+					break;
 				case "print": case "echo":
 					logger('<strong class="muted">' + string + '</strong>');
 					break;
@@ -209,30 +212,37 @@ var Game = {
 		}
 	},
 	connect:function(params) {
-			// Connect to server
-			
-			logger('Connecting to Aberquest server&hellip;');
+		// Connect to server
+		
+		logger('Connecting to Aberquest server&hellip;');
 
-			
-			var xhr = new $.ajax({
-		    type: 'POST',
-		    url: '../../api/?connect=' + Game.Player.name,
-		    dataType: "json",
-		    success: function(response, textStatus, XMLHttpRequest) {
-		    	if (params == true) {
-		    		logger('<pre>Connection details:\r\n--&gt; status: ' + textStatus + '\r\n--&gt; response: ' + response.response_string + '</pre>');
-		    	} else {
-		    		logger(response.response_string);
-		    	}
-	       },
-	       error: function(response, textStatus, XMLHttpRequest) {
-	       if (params == true) {
-		    		logger('<pre>Connection details:\r\n--&gt; status: ' + textStatus + '\r\n--&gt; response: ' + response.response_string + '</pre>');
-		    	} else {
-		    		logger(response.response_string);
-		    	}
-	       	logger('There was a problem connecting. Type <strong>connect</strong> to retry at any time.');
-	       }
-		 });
-		}
+		
+		var xhr = new $.ajax({
+	    type: 'POST',
+	    url: '../../api/?connect=' + Game.Player.name,
+	    dataType: "json",
+	    success: function(response, textStatus, XMLHttpRequest) {
+	    	if (params == true) {
+	    		logger('<pre>Connection details:\r\n--&gt; status: ' + textStatus + '\r\n--&gt; response: ' + response.response_string + '</pre>');
+	    	} else {
+	    		logger(response.response_string);
+	    	}
+       },
+       error: function(response, textStatus, XMLHttpRequest) {
+       if (params == true) {
+	    		logger('<pre>Connection details:\r\n--&gt; status: ' + textStatus + '\r\n--&gt; response: ' + response.response_string + '</pre>');
+	    	} else {
+	    		logger(response.response_string);
+	    	}
+       	logger('There was a problem connecting. Type <strong>connect</strong> to retry at any time.');
+       }
+	 });
+	},
+	ping:function() {
+		var logIndex = $('#output li').length + 1;
+		
+		logger("Running ping test... ",logIndex);
+		
+		logger("[to be added]",logIndex);
+	}
 }
